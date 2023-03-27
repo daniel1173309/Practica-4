@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    int opcion;
+    float numero, resultado;
+    
+    while(1)
+    {
+        printf("\nMenú de opciones:\n");
+        printf("1) Determinar si el número es par o impar\n");
+        printf("2) Elevar un número a una potencia\n");
+        printf("3) Calcular la raíz cuadrada de un número\n");
+        printf("4) Terminar el programa\n");
+        printf("Seleccione una opción: ");
+        scanf("%d", &opcion);
+        
+        switch(opcion)
+        {
+            case 1:
+                printf("\nIngrese un número: ");
+                scanf("%f", &numero);
+                if(numero == (int)numero)
+                {
+                    if((int)numero % 2 == 0)
+                        printf("\nEl número es par.\n");
+                    else
+                        printf("\nEl número es impar.\n");
+                }
+                else
+                    printf("\nEl número debe ser entero.\n");
+                break;
+                
+            case 2:
+                printf("\nIngrese un número: ");
+                scanf("%f", &numero);
+                printf("Ingrese una potencia: ");
+                scanf("%f", &resultado);
+                resultado = pow(numero, resultado);
+                printf("\nEl resultado es %.2f.\n", resultado);
+                break;
+                
+            case 3:
+                printf("\nIngrese un número: ");
+                scanf("%f", &numero);
+                if(numero >= 0)
+                {
+                    resultado = sqrt(numero);
+                    printf("\nLa raíz cuadrada de %.2f es %.2f.\n", numero, resultado);
+                }
+                else
+                    printf("\nEl número debe ser no negativo.\n");
+                break;
+                
+            case 4:
+                printf("\nSaliendo del programa...\n");
+                return 0;
+                
+            default:
+                printf("\nOpción no válida. Seleccione una opción válida.\n");
+        }
+    }
+}
