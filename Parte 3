@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int valor;
+    char palo[10];
+    
+    printf("Ingrese el valor de la carta (1-13): ");
+    scanf("%d", &valor);
+    printf("Ingrese el palo de la carta (corazon, diamante, espada, trebol): ");
+    scanf("%s", palo);
+    
+    while(1)
+    {
+        printf("\nMenú de opciones:\n");
+        printf("A) Indicar si la carta pertenece a una baraja\n");
+        printf("B) Indicar el valor de la carta\n");
+        printf("C) Indicar el palo de la carta\n");
+        printf("D) Terminar el programa\n");
+        printf("Seleccione una opción: ");
+        char opcion;
+        scanf(" %c", &opcion);
+        
+        switch(opcion)
+        {
+            case 'A':
+            case 'a':
+                if(valor >= 1 && valor <= 13 && 
+                   (strcmp(palo, "corazon") == 0 || strcmp(palo, "diamante") == 0 ||
+                    strcmp(palo, "espada") == 0 || strcmp(palo, "trebol") == 0))
+                    printf("\nLa carta %d de %s pertenece a una baraja.\n", valor, palo);
+                else
+                    printf("\nLa carta no pertenece a una baraja.\n");
+                break;
+                
+            case 'B':
+            case 'b':
+                if(valor >= 1 && valor <= 10)
+                    printf("\nEl valor de la carta es %d.\n", valor);
+                else if(valor == 11)
+                    printf("\nEl valor de la carta es J.\n");
+                else if(valor == 12)
+                    printf("\nEl valor de la carta es Q.\n");
+                else if(valor == 13)
+                    printf("\nEl valor de la carta es K.\n");
+                else
+                    printf("\nValor no válido.\n");
+                break;
+                
+            case 'C':
+            case 'c':
+                if(strcmp(palo, "corazon") == 0)
+                    printf("\nEl palo de la carta es corazón.\n");
+                else if(strcmp(palo, "diamante") == 0)
+                    printf("\nEl palo de la carta es diamante.\n");
+                else if(strcmp(palo, "espada") == 0)
+                    printf("\nEl palo de la carta es espada.\n");
+                else if(strcmp(palo, "trebol") == 0)
+                    printf("\nEl palo de la carta es trébol.\n");
+                else
+                    printf("\nPalo no válido.\n");
+                break;
+                
+            case 'D':
+            case 'd':
+                printf("\nSaliendo del programa...\n");
+                return 0;
+                
+            default:
+                printf("\nOpción no válida. Seleccione una opción válida.\n");
+        }
+    }
+}
