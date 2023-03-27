@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    int opcion;
+    float base, altura, lado1, lado2, lado3, perimetro, area;
+    
+    while(1)
+    {
+        printf("\nMenú de opciones:\n");
+        printf("1) Calcular el área de un triángulo\n");
+        printf("2) Calcular el perímetro de un triángulo\n");
+        printf("3) Conocer el tipo de triángulo que se forma\n");
+        printf("4) Terminar el programa\n");
+        printf("Seleccione una opción: ");
+        scanf("%d", &opcion);
+        
+        switch(opcion)
+        {
+            case 1:
+                printf("\nIngrese la base del triángulo: ");
+                scanf("%f", &base);
+                printf("Ingrese la altura del triángulo: ");
+                scanf("%f", &altura);
+                if(base > 0 && altura > 0)
+                {
+                    area = (base * altura) / 2;
+                    printf("\nEl área del triángulo es %.2f.\n", area);
+                }
+                else
+                    printf("\nLa base y la altura deben ser positivas.\n");
+                break;
+                
+            case 2:
+                printf("\nIngrese el primer lado del triángulo: ");
+                scanf("%f", &lado1);
+                printf("Ingrese el segundo lado del triángulo: ");
+                scanf("%f", &lado2);
+                printf("Ingrese el tercer lado del triángulo: ");
+                scanf("%f", &lado3);
+                if(lado1 > 0 && lado2 > 0 && lado3 > 0)
+                {
+                    perimetro = lado1 + lado2 + lado3;
+                    printf("\nEl perímetro del triángulo es %.2f.\n", perimetro);
+                }
+                else
+                    printf("\nLos lados deben ser positivos.\n");
+                break;
+                
+            case 3:
+                printf("\nIngrese el primer lado del triángulo: ");
+                scanf("%f", &lado1);
+                printf("Ingrese el segundo lado del triángulo: ");
+                scanf("%f", &lado2);
+                printf("Ingrese el tercer lado del triángulo: ");
+                scanf("%f", &lado3);
+                if(lado1 > 0 && lado2 > 0 && lado3 > 0)
+                {
+                    if(lado1 == lado2 && lado2 == lado3)
+                        printf("\nEl triángulo es equilátero.\n");
+                    else if(lado1 == lado2 || lado1 == lado3 || lado2 == lado3)
+                        printf("\nEl triángulo es isósceles.\n");
+                    else
+                        printf("\nEl triángulo es escaleno.\n");
+                }
+                else
+                    printf("\nLos lados deben ser positivos.\n");
+                break;
+                
+            case 4:
+                printf("\nSaliendo del programa...\n");
+                return 0;
+                
+            default:
+                printf("\nOpción no válida. Seleccione una opción válida.\n");
+        }
+    }
+}
