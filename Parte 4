@@ -1,0 +1,68 @@
+#include <stdio.h>
+
+int main() {
+    int lado1, lado2;
+    printf("Ingrese el valor de cada lado de la ficha de dominó:\n");
+    scanf("%d %d", &lado1, &lado2);
+    
+    char opcion;
+    do{
+        printf("\nSeleccione una opción:\n");
+        printf("A) Indicar si la ficha pertenece a un dominó de doble 6.\n");
+        printf("B) Indicar si la ficha es una mula y pertenece a un dominó de doble 6.\n");
+        printf("C) Indicar qué ficha es la anterior a esta y cuál es la siguiente ficha.\n");
+        printf("D) Indicar qué ficha está en el renglón anterior y en el siguiente.\n");
+        printf("E) Terminar el programa.\n");
+        scanf(" %c", &opcion);
+        
+        switch(opcion) {
+            case 'A':
+            case 'a':
+                if (lado1 <= 6 && lado2 <= 6)
+                    printf("La ficha pertenece a un dominó de doble 6.\n");
+                else
+                    printf("La ficha no pertenece a un dominó de doble 6.\n");
+                break;
+            case 'B':
+            case 'b':
+                if (lado1 == lado2 && lado1 <= 6)
+                    printf("La ficha es una mula y pertenece a un dominó de doble 6.\n");
+                else
+                    printf("La ficha no es una mula o no pertenece a un dominó de doble 6.\n");
+                break;
+            case 'C':
+            case 'c':
+                if (lado1 == lado2 && lado1 <= 6) {
+                    printf("La ficha es doble, no tiene ficha anterior ni siguiente.\n");
+                } else {
+                    int anterior_lado1 = lado1;
+                    int anterior_lado2 = lado2 - 1;
+                    int siguiente_lado1 = lado1;
+                    int siguiente_lado2 = lado2 + 1;
+                    printf("La ficha anterior es [%d|%d] y la siguiente es [%d|%d].\n", anterior_lado1, anterior_lado2, siguiente_lado1, siguiente_lado2);
+                }
+                break;
+            case 'D':
+            case 'd':
+                if (lado1 == lado2 && lado1 <= 6) {
+                    printf("La ficha es doble, no tiene ficha anterior ni siguiente en el renglón.\n");
+                } else {
+                    int anterior_lado1 = lado2;
+                    int anterior_lado2 = lado1 - 1;
+                    int siguiente_lado1 = lado1;
+                    int siguiente_lado2 = lado2 + 1;
+                    printf("La ficha anterior en el renglón es [%d|%d] y la siguiente es [%d|%d].\n", anterior_lado1, anterior_lado2, siguiente_lado1, siguiente_lado2);
+                }
+                break;
+            case 'E':
+            case 'e':
+                printf("Saliendo del programa...\n");
+                break;
+            default:
+                printf("Opción inválida, seleccione una opcion valida");
+                
+        }
+    } while(opcion!='e');
+
+  return 0;  
+}
